@@ -1,10 +1,12 @@
+from taxes import calculate_ICMS, calculate_ISS
+
 class Tax_calculator(object):
 
     def performs_calculation(self, budget, tax):
         if tax == 'ISS':
-            calculated_tax = budget.value * 0.1
+            calculated_tax = calculate_ISS(budget)
         if tax == 'ICMS':
-            calculated_tax = budget.value * 0.6
+            calculated_tax = calculate_ICMS(budget)
         print( calculated_tax )
 
 
