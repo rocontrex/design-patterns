@@ -1,12 +1,18 @@
 # -*- coding: UTF-8 -*-
 
+from discounts import *
+
 class Discount_calculator(object):
 
-    def calculate(budget):
-        if budget.total_items > 5:
-            return budget.value * 0.1
-        elif budget.value > 500:
-            return budget.value * 0.07
+    def calculate(self, budget):
+
+        discount = Discount_per_five_items(
+            Discount_per_more_then_five_hundred_reais(
+                Without_discount()
+                )
+            ).Calculate(budget)
+
+        return discount
 
 if __name__ == '__main__':
 
@@ -17,4 +23,10 @@ if __name__ == '__main__':
     budget.add_item(Item('Item - 2', 100))
     budget.add_item(Item('Item - 3', 500))
 
-    print(budget.value)
+    print('Value without discount',budget.value)
+
+    calculator = Discount_calculator()
+    discount = calculator.calculate(budget)
+    final_value = budget.value - discount
+
+    print('Value with discount: ', discount)
