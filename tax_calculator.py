@@ -20,7 +20,11 @@ if __name__ == '__main__':
     calculator.performs_calculation(budget, ICMS())
     calculator.performs_calculation(budget, ISS())
 
+    calculator.performs_calculation(budget, ISS(ICMS()))
+
     
     print('ICPP and IKCV')
     calculator.performs_calculation(budget, ICPP())
     calculator.performs_calculation(budget, IKCV())
+
+    calculator.performs_calculation(budget, ICPP(IKCV()))
